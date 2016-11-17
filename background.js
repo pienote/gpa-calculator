@@ -1,0 +1,11 @@
+/*document.body.style.backgroundColor = "#440000";
+document.getElementsByClassName("notecard")[0].style.backgroundColor = "#FCFC00"
+document.getElementsByClassName("notecard")[1].style.backgroundColor = "#00FC00"
+document.getElementsByClassName("cellCenter")[0].style.backgroundColor = "#00FCFC"
+document.getElementsByClassName("cellCenter")[1].style.backgroundColor = "#00FCFC"
+document.getElementsByClassName("cellCenter")[2].style.backgroundColor = "#00FCFC"
+document.getElementsByClassName("cellCenter")[3].style.backgroundColor = "#00FCFC"
+document.getElementsByClassName("cellCenter")[4].style.backgroundColor = "#00FCFC"
+document.getElementsByClassName("cellCenter")[5].style.backgroundColor = "#00FCFC"
+document.getElementsByClassName("cellLeft")[0].style.backgroundColor = "#00FCFC"
+document.getElementsByClassName("cellLeft")[1].style.backgroundColor = "#00FCFC"*/
