@@ -163,7 +163,7 @@ function credit(course)
 	}
 }
 
-if($(".cellRight").length == 22)
+if($(".cellRight").length >= 22)
 {
 	var i = 1;
 	var c = 0;
