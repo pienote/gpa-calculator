@@ -170,66 +170,19 @@ if($(".cellRight").length >= 22)
 	var temp;
 	do
 	{
-		c++;
-		if ($(".cellRight")[i])
-			temp = parseFloat($(".cellRight")[i].innerHTML);
-		if(i <= 16)
+		temp = parseFloat($(".cellRight")[i].innerHTML);
+		if ($(".cellRight")[i].innerHTML)
 		{
-			if(!isNaN(temp))
-			{
-				grades.push(temp);
-			}
-			else
-			{
-				grades.push(temp);
-				flags[c] = false;
-			}
-			i += 3;
+			c++;
+			grades.push(temp);
 		}
-	} while(i < 16)
-
-	//16
-	if($(".cellRight")[i])
-		temp = parseFloat($(".cellRight")[i].innerHTML);
-	if(!isNaN(temp))
-	{
-		grades.push(temp);
-	}
-	else
-	{
-		grades.push(temp);
-		flags[c] = false;
-	}
-
-	//18
-	c++;	
-	i = 18;
-	if($(".cellRight")[i])
-		temp = parseFloat($(".cellRight")[i].innerHTML);
-	if(!isNaN(temp))
-	{
-		grades.push(temp);
-	}
-	else
-	{
-		grades.push(NaN);
-		flags[c] = false;
-	}
-
-	//19
-	c++;	
-	i++;
-	if($(".cellRight")[i])
-		temp = parseFloat($(".cellRight")[i].innerHTML);
-	if(!isNaN(temp))
-	{
-		grades.push(temp);
-	}
-	else
-	{
-		grades.push(NaN);
-		flags[c] = false;
-	}
+		else
+		{
+			grades.push(temp);
+			flags[c] = false;
+		}
+		i++;
+	} while(i < $(".cellRight").length)
 }
 
 for(var i = 0; i < flags.length; i++)
