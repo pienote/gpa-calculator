@@ -178,7 +178,6 @@ if($(".cellRight").length >= 22)
 		}
 		else
 		{
-			grades.push(temp);
 			flags[c] = false;
 		}
 		i++;
