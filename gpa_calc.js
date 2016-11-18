@@ -163,36 +163,73 @@ function credit(course)
 	}
 }
 
-if($(".cellRight").length >= 22)
+var i = 1;
+var c = 0;
+do
 {
-	var i = 1;
-	var c = 0;
-	var temp;
-	do
+	c++;
+	var temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
+	if(i <= 16)
 	{
-		temp = parseFloat($(".cellRight")[i].innerHTML);
-		if ($(".cellRight")[i].innerHTML)
+		if(!isNaN(temp))
 		{
-			c++;
 			grades.push(temp);
 		}
 		else
 		{
+			grades.push(temp);
 			flags[c] = false;
 		}
-		i++;
-	} while(i < $(".cellRight").length)
+		i += 3;
+	}
+} while(i < 16)
+
+//16
+temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
+if(!isNaN(temp))
+{
+	grades.push(temp);
+}
+else
+{
+	grades.push(temp);
+	flags[c] = false;
+}
+
+//18
+c++;	
+i = 18;
+temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
+if(!isNaN(temp))
+{
+	grades.push(temp);
+}
+else
+{
+	grades.push(NaN);
+	flags[c] = false;
+}
+
+//19
+c++;	
+i++;
+temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
+if(!isNaN(temp))
+{
+	grades.push(temp);
+}
+else
+{
+	grades.push(NaN);
+	flags[c] = false;
 }
 
 for(var i = 0; i < flags.length; i++)
 {
 	if(flags[i])
 	{
-		if($(".categorytab")[i])
-		{
-			places.push(placement($(".categorytab")[i].innerHTML))
-			payoff.push(credit(parseInt($(".categorytab")[i].getAttribute("onclick").substring(43, 46))));
-		}
+		places.push(placement(document.getElementsByClassName('categorytab')[i].innerHTML))
+		payoff.push(credit(parseInt(document.getElementsByClassName('categorytab')[i].getAttribute("onclick").substring(43, 46))));
 	}
 	else
 	{
