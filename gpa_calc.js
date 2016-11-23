@@ -17,13 +17,13 @@ var wcgpa = [];
 
 function placement(str)
 {
-	if(str.indexOf('AP') > -1 || str.indexOf('Honors') > -1)
+	if(str.indexOf("AP") > -1 || str.indexOf("Honors") > -1)
 		return 0;
-	if(str.indexOf('Advanced') > -1)
+	if(str.indexOf("Advanced") > -1)
 		return 1;
-	if(str.indexOf('CPA') > -1)
+	if(str.indexOf("CPA") > -1)
 		return 2;
-	if(str.indexOf('CPB') > -1)
+	if(str.indexOf("CPB") > -1)
 		return 3;
 	return NaN;
 }
