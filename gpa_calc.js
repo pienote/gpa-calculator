@@ -169,13 +169,13 @@ for(var i = 0; i < $(".cellRight").length; i++)
 	var temp = parseFloat($(".cellRight")[i].innerHTML);
 	if(!isNaN(temp))
 	{
-		console.log("Grade at cellRight #" + i + ". Grade: " + temp);
+		//console.log("Grade at cellRight #" + i + ". Grade: " + temp);
 		indexs.push(i);
 		grades.push(temp);
 		count++;
 	}
 }
-console.log("count: " + count);
+//console.log("count: " + count);
 
 for(var i = 0; i < count; i++)
 {
