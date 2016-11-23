@@ -7,13 +7,13 @@ var hy = 2.5;
 var pe = 1;
 var total_credits = 0;
 var classcount = 0;
+var indexs = [];
 var payoff = [];
 var places = [];
 var grades = [];
 var uwgpa = [];
 var wgpa = [];
 var wcgpa = [];
-var flags = [true, true, true, true, true, true, true, true];
 
 function placement(str)
 {
@@ -163,104 +163,36 @@ function credit(course)
 	}
 }
 
-var i = 1;
-var c = 0;
-do
+var count = 0;
+for(var i = 0; i < $(".cellRight").length; i++)
 {
-	c++;
-	var temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
-	if(i <= 16)
+	var temp = parseFloat($(".cellRight")[i].innerHTML);
+	if(!isNaN(temp))
 	{
-		if(!isNaN(temp))
-		{
-			grades.push(temp);
-		}
-		else
-		{
-			grades.push(temp);
-			flags[c] = false;
-		}
-		i += 3;
+		console.log("Grade at cellRight #" + i + ". Grade: " + temp);
+		indexs.push(i);
+		grades.push(temp);
+		count++;
 	}
-} while(i < 16)
+}
+console.log("count: " + count);
 
-//16
-temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
-if(!isNaN(temp))
+for(var i = 0; i < count; i++)
 {
-	grades.push(temp);
-}
-else
-{
-	grades.push(temp);
-	flags[c] = false;
-}
-
-//18
-c++;	
-i = 18;
-temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
-if(!isNaN(temp))
-{
-	grades.push(temp);
-}
-else
-{
-	grades.push(NaN);
-	flags[c] = false;
-}
-
-//19
-c++;	
-i++;
-temp = parseFloat(document.getElementsByClassName('cellRight')[i].innerHTML);
-if(!isNaN(temp))
-{
-	grades.push(temp);
-}
-else
-{
-	grades.push(NaN);
-	flags[c] = false;
-}
-
-for(var i = 0; i < flags.length; i++)
-{
-	if(flags[i])
+	if($(".categorytab")[i])
 	{
-		places.push(placement(document.getElementsByClassName('categorytab')[i].innerHTML))
-		payoff.push(credit(parseInt(document.getElementsByClassName('categorytab')[i].getAttribute("onclick").substring(43, 46))));
-	}
-	else
-	{
-		places.push(0);
-		payoff.push(0);
+		places.push(placement($(".categorytab")[i].innerHTML))
+		payoff.push(credit(parseInt($(".categorytab")[i].getAttribute("onclick").substring(43, 46))));
 	}
 }
 
 var total_credits = payoff.reduce(function(a, b) { return a+b; } );
 
-for(var i = 0; i < flags.length; i++)
+for(var i = 0; i < count; i++)
 {
-	if(flags[i])
-	{
 		uwgpa.push(gpa(grades[i], 2));
 		wgpa.push(gpa(grades[i], places[i]));
 		wcgpa.push(gpa(grades[i], places[i])*payoff[i]);
-	}
-	else
-	{
-		uwgpa.push(-1);
-		wgpa.push(-1);
-		wcgpa.push(-1);
-	}
-}
-
-for(var i = 0; i < flags.length; i++)
-{
-	if(uwgpa[i] >= 0)
-		classcount++;
-		
 }
 
 var avg_grade = grades.reduce(function(a, b) 
@@ -271,7 +203,7 @@ var avg_grade = grades.reduce(function(a, b)
 		return a
 	else
 		return a+b;
-})/classcount; 
+})/count; 
 
 var avg_uwgpa = uwgpa.reduce(function(a, b) 
 {
@@ -283,7 +215,7 @@ var avg_uwgpa = uwgpa.reduce(function(a, b)
 		return 0;
 	else
 		return a+b;
-})/classcount; 
+})/count; 
 
 var avg_wgpa = wgpa.reduce(function(a, b) 
 {
@@ -295,7 +227,7 @@ var avg_wgpa = wgpa.reduce(function(a, b)
 		return 0;
 	else
 		return a+b;
-})/classcount;
+})/count;
  
 var avg_wcgpa = wcgpa.reduce(function(a, b) 
 {
