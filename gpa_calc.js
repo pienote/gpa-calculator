@@ -222,12 +222,14 @@ var avg_wcgpa = wcgpa.reduce(function(a, b) {
         return a + b;
 }) / total_credits;
  
-var w = window.open('', 'Grades', 'width=640,height=480');
+var w = window.open('', 'Grades', 'width=640,height=480,status=1');
  
 localStorage["gpa"] = avg_wcgpa;
+w.document.write("<span style=\"font-family:arial;color:blue;font-size:24\">");
 if (newuser) {
     w.document.write("***GRADES***</br>Average Grade=" + avg_grade + "</br>Average GPA (Unweighted)=" +
         avg_uwgpa + "</br>Average GPA (Weighted)=" + avg_wgpa + "</br>Average GPA (Weighted + Credits)=" + avg_wcgpa);
+	w.document.write("</span>");
     w.document.close();
 } else {
     var perchange = Math.abs(avg_wcgpa - oldgpa) / oldgpa;
@@ -235,5 +237,6 @@ if (newuser) {
     w.document.write("***GRADES***</br>Average Grade=" + avg_grade + "</br>Average GPA (Unweighted)=" +
         avg_uwgpa + "</br>Average GPA (Weighted)=" + avg_wgpa + "</br>Average GPA (Weighted + Credits)=" + avg_wcgpa +
         "</br>Last GPA=" + oldgpa + " (" + (perchange > 0 ? "+" : "") + (perchange * 100) + "% change)");
+	w.document.write("</span>");
     w.document.close();
 }
