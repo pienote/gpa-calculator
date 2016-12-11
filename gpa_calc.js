@@ -152,7 +152,7 @@ function credit(course) {
 var count = 0;
 for (var i = 0; i < $(".cellRight")
     .length; i++) {
-    var temp = parseFloat($(".cellRight")[i].innerHTML);
+    var temp = parseFloat($(".cellRight")[i].innerHTML.substring(1138, 1269));
     if (!isNaN(temp)) {
         //console.log("Grade at cellRight #" + i + ". Grade: " + temp);
         indexs.push(i);
