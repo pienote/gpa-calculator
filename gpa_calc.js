@@ -138,7 +138,13 @@ function gpa(grade, place) {
 }
  
 function credit(course) {
-    if ((course >= 100 && course <= 400) || (course >= 490 && course <= 540)) {
+	if(course == 143 || course == 149 || course == 154 || course == 152 || course == 156 || course == 150 ||
+	course == 193 || course == 180 || course == 267 || course == 266 || course == 250 || course == 269 ||
+	course == 251 || course == 256 || course == 362 || course == 371 || course == 370 || course == 373 ||
+	course == 482 || course == 630 || course == 634 || course == 635 || course == 711 || course == 725 ||
+	course == 723 || course == 726) {
+		return hy;
+	} if ((course >= 100 && course <= 400) || (course >= 490 && course <= 540)) {
         return arts;
     } else if (course >= 400 && course < 490) {
         return sci;
