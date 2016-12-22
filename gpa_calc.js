@@ -207,9 +207,7 @@ var avg_grade = grades.reduce(function(a, b) {
 }) / count;
  
 var avg_uwgpa = uwgpa.reduce(add(a, b)) / count;
- 
 var avg_wgpa = wgpa.reduce(add(a, b)) / count;
- 
 var avg_wcgpa = wcgpa.reduce(add(a, b)) / total_credits;
  
 var w = window.open('', 'Grades', 'width=640,height=480,status=1');
