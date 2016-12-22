@@ -15,6 +15,17 @@ var uwgpa = [];
 var wgpa = [];
 var wcgpa = [];
  
+function add(a, b) {
+    if (a < 0)
+        return b;
+    if (b < 0)
+        return a;
+    if (a < 0 && b < 0)
+        return 0;
+    else
+        return a + b;
+}
+
 function placement(str) {
     if (str.indexOf("AP") > -1 || str.indexOf("Honors") > -1)
         return 0;
@@ -195,38 +206,11 @@ var avg_grade = grades.reduce(function(a, b) {
         return a + b;
 }) / count;
  
-var avg_uwgpa = uwgpa.reduce(function(a, b) {
-    if (a < 0)
-        return b;
-    if (b < 0)
-        return a;
-    if (a < 0 && b < 0)
-        return 0;
-    else
-        return a + b;
-}) / count;
+var avg_uwgpa = uwgpa.reduce(add(a, b)) / count;
  
-var avg_wgpa = wgpa.reduce(function(a, b) {
-    if (a < 0)
-        return b;
-    if (b < 0)
-        return a;
-    if (a < 0 && b < 0)
-        return 0;
-    else
-        return a + b;
-}) / count;
+var avg_wgpa = wgpa.reduce(add(a, b)) / count;
  
-var avg_wcgpa = wcgpa.reduce(function(a, b) {
-    if (a < 0)
-        return b;
-    if (b < 0)
-        return a;
-    if (a < 0 && b < 0)
-        return 0;
-    else
-        return a + b;
-}) / total_credits;
+var avg_wcgpa = wcgpa.reduce(add(a, b)) / total_credits;
  
 var w = window.open('', 'Grades', 'width=640,height=480,status=1');
  
